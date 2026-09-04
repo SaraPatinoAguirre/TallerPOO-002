@@ -146,7 +146,7 @@ public class Rectangle : Square
     {
         if (b <= 0)
         {
-            throw new ArgumentException("El lado B debe ser mayor a 0 // Side A must be greater than 0");
+            throw new ArgumentException("El lado B debe ser mayor a 0 // Side B must be greater than 0");
         }
         return b;
     }
@@ -176,12 +176,12 @@ public class Rhombus : Square
 
 
     // Constructors
-    public Rhombus(string name, double d1, double d2, double a)
+    public Rhombus(string name, double a, double d1, double d2)
     {
         Name = name;
+        A = a;
         D1 = d1;
         D2 = d2;
-        A = a;
     }
 
     public Rhombus() { }
@@ -197,7 +197,7 @@ public class Rhombus : Square
         return 4 * A ;
     }
 
-    protected double ValidateD1(double d1)
+    private double ValidateD1(double d1)
     {
         if (d1 <= 0)
         {
@@ -206,7 +206,7 @@ public class Rhombus : Square
         return d1;
     }
 
-    protected double ValidateD2(double d2)
+    private double ValidateD2(double d2)
     {
         if (d2 <= 0)
         {
@@ -214,4 +214,145 @@ public class Rhombus : Square
         }
         return d2;
     }
+}
+
+
+
+public class Kite : Rhombus
+{
+    // Fields
+    private double _b;
+
+    // Properties
+    public double B
+    {
+        get => _b;
+        set => _b = ValidateB(value);
+    }
+
+    // Constructors
+    public Kite(string name, double a, double b, double d1, double d2 )
+    {
+        Name = name;
+        A = a;
+        B = b;
+        D1 = d1;
+        D2 = d2;
+    }
+
+    public Kite() { }
+
+    // Methods
+    public override double GetArea()
+    {
+        return (D1 * D2) / 2;
+    }
+
+    public override double GetPerimeter()
+    {
+        return 2 * (A + B);
+    }
+
+    private double ValidateB(double b)
+    {
+        if (b <= 0)
+        {
+            throw new ArgumentException("El lado B debe ser mayor a 0 // Side B must be greater than 0");
+        }
+        return b;
+    }
+}
+
+
+public class Parallelogram : Rectangle
+{
+    // Fields
+    private double _h;
+
+    // Properties
+    public double H
+    {
+        get => _h;
+        set => _h = ValidateH(value);
+    }
+
+    // Constructors
+    public Parallelogram(string name, double a, double b, double h )
+    {
+        Name = name;
+        A = a;
+        B = b;
+        H = h;
+    }
+
+    public Parallelogram() { }
+
+    // Methods
+    public override double GetArea()
+    {
+        return B * H;
+    }
+
+    public override double GetPerimeter()
+    {
+        return 2 * (A + B);
+    }
+
+    private double ValidateH(double h)
+    {
+        if (h <= 0)
+        {
+            throw new ArgumentException("El lado H debe ser mayor a 0 // Side H must be greater than 0");
+        }
+        return h;
+    }
+}
+
+
+
+public class Trapeze : Triangle
+{
+    // Fields
+    private double _d;
+
+    // Properties
+    public double D
+    {
+        get => _d;
+        set => _d = ValidateD(value);
+    }
+
+    // Constructors
+    public Trapeze(string name, double a, double b, double c, double d, double h )
+    {
+        Name = name;
+        A = a;
+        B = b;
+        C = c;
+        D = d;
+        H = h;
+    }
+
+    public Trapeze() { }
+
+    // Methods
+    public override double GetArea()
+    {
+        return ((B + D) * H ) / 2;
+    }
+
+    public override double GetPerimeter()
+    {
+        return A + B + C + D;
+    }
+
+    private double ValidateD(double d)
+    {
+        if (d <= 0)
+        {
+            throw new ArgumentException("El lado D debe ser mayor a 0 // Side D must be greater than 0");
+        }
+        return d;
+    }
+
 }
