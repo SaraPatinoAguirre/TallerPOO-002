@@ -312,6 +312,71 @@ public class Parallelogram : Rectangle
 }
 
 
+public class Triangle : Rectangle
+{
+    // Fields
+    private double _c;
+    private double _h;
+
+    // Properties
+    public double C
+    {
+        get => _c;
+        set => _c = ValidateC(value);
+    }
+
+    public double H
+    {
+        get => _h;
+        set => _h = ValidateH(value);
+    }
+
+    // Constructors
+    public Triangle(string name, double a, double b, double c, double h )
+    {
+        Name = name;
+        A = a;
+        B = b;
+        C = c;
+        H = h;
+    }
+
+    public Triangle() { }
+
+    // Methods
+    public override double GetArea()
+    {
+        return (B * H)  / 2;
+    }
+
+    public override double GetPerimeter()
+    {
+        return A + B + C ;
+    }
+
+    protected double ValidateC(double c)
+    {
+        if (c <= 0)
+        {
+            throw new ArgumentException("El lado C debe ser mayor a 0 // Side C must be greater than 0");
+        }
+        return c;
+    }
+
+    protected double ValidateH(double h)
+    {
+        if (h <= 0)
+        {
+            throw new ArgumentException("El lado H debe ser mayor a 0 // Side H must be greater than 0");
+        }
+        return h;
+    }
+
+}
+
+
+
+
 
 public class Trapeze : Triangle
 {
