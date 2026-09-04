@@ -2,11 +2,14 @@
 
 public abstract class GeometricFigure
 {
+    //Fields
+    private string _name = null!;
+
     // Properties
     public string Name { 
-        get => _name
-        set => _name
-    } = null!;
+        get => _name;
+        set => _name = value;
+    }
 
     // Methods public
     public abstract double GetArea();
