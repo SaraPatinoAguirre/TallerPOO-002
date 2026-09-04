@@ -1,4 +1,4 @@
-﻿namespace GeometricFigure.Backend;
+﻿namespace GeometricFigures.Backend;
 
 public abstract class GeometricFigure
 {
