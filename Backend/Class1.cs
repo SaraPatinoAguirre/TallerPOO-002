@@ -108,6 +108,7 @@ public class Square : GeometricFigure
 
 
 
+
 public class Rectangle : Square
 {
     // Fields
@@ -121,13 +122,14 @@ public class Rectangle : Square
     }
 
     // Constructors
-    public Square(string name, double b)
+    public Rectangle(string name, double a, double b)
     {
         Name = name;
+        A = a;
         B = b;
     }
 
-    public Square() { }
+    public Rectangle() { }
 
     // Methods
     public override double GetArea()
@@ -144,8 +146,72 @@ public class Rectangle : Square
     {
         if (b <= 0)
         {
-            throw new ArgumentException("El lado B debe ser mayor a 0 // Side B must be greater than 0");
+            throw new ArgumentException("El lado B debe ser mayor a 0 // Side A must be greater than 0");
         }
         return b;
+    }
+}
+
+
+
+
+public class Rhombus : Square
+{
+    // Fields
+    private double _d1;
+    private double _d2;
+
+    // Properties
+    public double D1
+    {
+        get => _d1;
+        set => _d1 = ValidateD1(value);
+    }
+
+    public double D2
+    {
+        get => _d2;
+        set => _d2 = ValidateD2(value);
+    }
+
+
+    // Constructors
+    public Rhombus(string name, double d1, double d2, double a)
+    {
+        Name = name;
+        D1 = d1;
+        D2 = d2;
+        A = a;
+    }
+
+    public Rhombus() { }
+
+    // Methods
+    public override double GetArea()
+    {
+        return (D1 * D2) / 2;
+    }
+
+    public override double GetPerimeter()
+    {
+        return 4 * A ;
+    }
+
+    protected double ValidateD1(double d1)
+    {
+        if (d1 <= 0)
+        {
+            throw new ArgumentException("El lado D1 debe ser mayor a 0 // Side D1 must be greater than 0");
+        }
+        return d1;
+    }
+
+    protected double ValidateD2(double d2)
+    {
+        if (d2 <= 0)
+        {
+            throw new ArgumentException("El lado D2 debe ser mayor a 0 // Side D2 must be greater than 0");
+        }
+        return d2;
     }
 }
